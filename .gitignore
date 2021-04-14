@@ -30,3 +30,60 @@
 *.exe
 *.out
 *.app
+#include <iostream>
+#include<algorithm>
+#include<string>  
+ 
+using namespace std;
+int main()
+{
+	
+	int n = 0, len = 0;
+	string s;
+	bool found = false;
+	cin >> n;
+	 
+	for (int i = 0; i < n; i++) {
+		cin >> s;
+		len = s.size();
+		char* x = new char[len];
+		for (int j = 0; j < len; j++) {
+			char c = s[j];
+			x[j] = s[j];
+			for (int l = j+1; l < len;l++) {
+				if (c == s[l]) {
+					found = true;
+				}
+					
+			}
+			if (found)
+				break;
+		}
+		if (found)
+			cout << "No"<<endl;
+		else {
+ 
+			sort(x, x + len);
+			/*for (int k = 0; k < len; k++) {
+				cout << x[k];
+			}*/
+			for (int j = 0; j < len-1; j++) {
+				if (x[j+1]-x[j]!=1) {
+					found = true;
+					break;
+				}
+				
+ 
+			}
+			if (found)
+				cout << "No"<<endl;
+			else
+				cout << "Yes"<<endl;
+		}
+		found = false;
+		
+	 }
+	 
+	
+	return 0;
+}
